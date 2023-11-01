@@ -1,0 +1,23 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+
+
+<a href="{% url 'bulletinboard' %}">atras</a>
+<div >
+  <div >
+    <div>
+        <h1>{{posts.title}}</h1>
+        <h5>{{posts.created_at}}</h5>
+        <p>{{posts.body}}</p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
