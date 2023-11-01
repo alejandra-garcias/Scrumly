@@ -1,0 +1,14 @@
+
+<div class="contenido">
+  <h1>Inicia sesion</h1>
+  <form method="POST">
+    {% csrf_token %}     
+    <label>{{form.username.label}}</label>
+    {{form.username}}
+    <label>{{form.password.label}}</label>
+    {{form.password}}
+    <input class="button" type="submit" value="Inicia sesion" />
+  </form>
+  <p>No tienes cuenta? <a href="{% url 'registro' %}">Registrate aqui</a></p>
+</div>
+

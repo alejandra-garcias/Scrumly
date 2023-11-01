@@ -1,0 +1,17 @@
+
+<div class="contenido">
+  <h1>Crea una cuenta</h1>
+  <form class="formularios" method="POST">
+    {% csrf_token %}
+    <label>{{form.username.label}}</label>
+    {{form.username}}
+    <label>{{form.password1.label}}</label>
+    {{form.password1}}
+    <label>{{form.password2.label}}</label>
+    {{form.password2}}
+
+    <input class="button" type="submit" value="Crear cuenta" />
+  </form>
+  <p>Ya tienes cuenta? <a href="{% url 'login' %}">Inicia sesion aqui</a></p>
+</div>
+
