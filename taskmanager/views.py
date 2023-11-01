@@ -9,6 +9,8 @@ from django.contrib.auth.views import LoginView
 from django.contrib.auth.decorators import login_required
 
 
+
+
 # Create your views here.
 
 class Logueo(LoginView):
@@ -119,3 +121,33 @@ def search(request):
         "update": None
     }
     return render(request, "TaskManager/index.html", context)
+
+from django.shortcuts import render
+from django.http import JsonResponse
+import openai
+from .models import Chatbot
+from django.utils import timezone
+
+openai_api_key = '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'
+openai.api_key = openai_api_key
+def ask_openai(message):
+    response= openai.ChatCompletion.create(
+        model = "gpt-3.5-turbo", #text-davinci-003
+        messages=[
+            {'role':"system", "content":"You are a helpful assistant"},
+            {"role":"user","content":message},
+        ]
+    )
+
+    answer = response.choices[0].message.content.strip()
+    return answer
+
+def chatbot(request,):
+    chats = Chatbot.objects.filter(user=request.user)
+    if request.method == 'POST':
+        message =  request.POST.get('message')
+        response = ask_openai(message)
+        chat= Chatbot(user=request.user , message= message , response= response, created_at= timezone.now)
+        chat.save()
+        return JsonResponse({'message':message, 'response':response})
+    return render(request, '/TaskManager/index.html',{'chats':chats})

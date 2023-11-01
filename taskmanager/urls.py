@@ -13,6 +13,6 @@ urlpatterns = [
     path('login/', Logueo.as_view(),name='login'),
     path('logout/',LogoutView.as_view(next_page='login'),name='logout'),
     path('registro/',PaginaRegistro.as_view(),name='registro'),
-    path('search/', views.search, name='search')
-
+    path('search/', views.search, name='search'),
+    path('chatbot/', views.chatbot,name='chatbot')
 ]
