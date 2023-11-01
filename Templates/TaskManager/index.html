@@ -95,7 +95,8 @@
             </div>
 
         </div>
-        <div class="chat-container">
+        <input type="checkbox" name="m1234" id="m1234">
+        <div class="chat-container" id="chaty">
           <div class="card flex-grow-1">
             <div class="card-header bg-primary text-white">AgileHub Help Center</div>
             {% if user.is_authenticated %}
@@ -165,6 +166,30 @@
         </div>
         
         <script>
+                  $(document).ready(function() {
+            $('#mas').change(function() {
+                if ($(this).is(':checked')) {
+                    $('#w-75').show();
+                } else {
+                    $('#w-75').hide();
+                }
+            });
+    
+            // Al enviar el formulario, establece los valores de los checkboxes a true/false
+            $('form').submit(function() {
+                $('#priorityCheckbox').val($('#priorityCheckbox').is(':checked'));
+                $('#completedCheckbox').val($('#completedCheckbox').is(':checked'));
+            });
+        });
+
+        $(document).ready(function() {
+        $('[name="m1234"]').change(function() {
+            if ($(this).is(':checked')) {
+                $('#chaty').show();
+            } else {
+                $('#chaty').hide();
+            }
+        });});
           const messagesList = document.querySelector('.messages-list');
           const messageForm = document.querySelector('.message-form');
           const messageInput = document.querySelector('.message-input');
