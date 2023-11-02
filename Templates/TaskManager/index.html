@@ -1,3 +1,4 @@
+{% extends 'Layout/layout.html'%} {% block content %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,8 +20,9 @@
     </div>
     <main class="container-fluid">
         <div class="row my-5">
-            <h1 class="col text-center">To Do List with <b>Django - {{user.username}}</b></h1>
+            <h1 class="col text-center">Hola {{ request.user|title }}</h1>
         </div>
+        <!------------------------UPDATE----------------------------------->
         <div class="row justify-content-center py-5">
 
             <div class="col-6 row justify-content-center h-50 p-5">
@@ -49,7 +51,8 @@
                 </form>
                 {% else %}
                 <input type="checkbox" id="mas"></input>
-                <form id="w-75" style="display: hidden" class="w-75" method="post" action={% url "insert" %}>
+                     <!------------------------CREATE----------------------------------->
+                <form id="w-75" style="display: none" class="w-75" method="post" action={% url "insert" %}>
                     {% csrf_token %}
                     <div class="mb-3">
                         <label for="subject" class="form-label">Subject</label>
@@ -71,7 +74,7 @@
                 </form>
                 {% endif %}
             </div>
-
+<!------------------------LISTADO------------------------------------------------------>
             <div class="col-5 container justify-content-center">
             {% for data in db_data %}
                <div class="row">
@@ -95,8 +98,9 @@
             </div>
 
         </div>
+        <!------------------------CHATBOT------------------------------------------------------>
         <input type="checkbox" name="m1234" id="m1234">
-        <div class="chat-container" id="chaty">
+        <div class="chat-container" style="display: none;" id="chaty">
           <div class="card flex-grow-1">
             <div class="card-header bg-primary text-white">AgileHub Help Center</div>
             {% if user.is_authenticated %}
@@ -107,17 +111,6 @@
             <div class="card-body messages-box">
               
               <ul class="list-unstyled messages-list">
-                
-                <!-- <li class="message received">
-                  <div class="message-text">
-                    <div class="message-sender">
-                      <b>AI Chatbot</b>
-                    </div>
-                    <div class="message-content">
-                      Hi {{user.username}}, I am your AI Chatbot, you can ask me anything.
-                    </div>
-                  </div>
-                </li> -->
         
                 {% for chat in chats %}
                   {% if chat.user == request.user %}
@@ -183,7 +176,7 @@
         });
 
         $(document).ready(function() {
-        $('[name="m1234"]').change(function() {
+        $("#m1234").change(function() {
             if ($(this).is(':checked')) {
                 $('#chaty').show();
             } else {
@@ -247,3 +240,4 @@
         </script>
 </body>
 </html>
+{% endblock content %}

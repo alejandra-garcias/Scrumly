@@ -1,4 +1,4 @@
-
+{% extends 'Layout/layout.html'%} {% block content %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +8,7 @@
 <body>
 
 
-<a href="{% url 'bulletinboard' %}">atras</a>
+<a href="{% url 'bulletinboard' %}">Volver al tablon de anuncios </a>
 <div >
   <div >
     <div>
@@ -21,3 +21,4 @@
 
 </body>
 </html>
+{% endblock content %}
