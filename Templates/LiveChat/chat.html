@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+    <div style="background-color: red;">
+        {% for room in rooms %}
+          <p>{{room.name}}</p>
+          {% if room.is_private and room.owner == request.user %}
+          <p>{{room.name}}</p>
+          {% endif %}
+        {% endfor %}
+    
+      </div>
+  
+      <form id="post-form" method="POST" action="checkview">
+          {% csrf_token %}
+          <label>Room Name</label>
+          <input type="text" name="room_name" id="room_name" width="100px" />
+          <label>Private</label>
+          <input type="checkbox" name="is_private" id="is_private" />
+          <input style="display:none ;"type="text" placeholder="Room code" name="room_code" id="room_code" width="100px" />
+          <input type="submit" value="Enter Room">
+      </form>
+  
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script>
+      $(document).ready(function() {
+          $('#is_private').change(function() {
+              if ($(this).is(':checked')) {
+                  $('#room_code').show();
+              } else {
+                  $('#room_code').hide();
+              }
+          });
+      });
+      </script>
+  </body>
+
+
+</html>

@@ -128,7 +128,7 @@ import openai
 from .models import Chatbot
 from django.utils import timezone
 
-openai_api_key = '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'
+openai_api_key = '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'
 openai.api_key = openai_api_key
 def ask_openai(message):
     response= openai.ChatCompletion.create(
