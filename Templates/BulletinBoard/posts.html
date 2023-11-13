@@ -1,24 +1,19 @@
 {% extends 'Layout/layout.html'%} {% block content %}
-<!DOCTYPE html>
-<html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
 
-</head>
-<body>
+<section class="container">
+    <div class="containerPage">
 
-
-<a href="{% url 'bulletinboard' %}">Volver al tablon de anuncios </a>
-<div >
-  <div >
-    <div>
-        <h1>{{posts.title}}</h1>
-        <h5>{{posts.created_at}}</h5>
-        <p>{{posts.body}}</p>
+        <a class="" href="{% url 'bulletinboard' %}">Volver al tablon de anuncios </a>
+        <div class="cardBulletin">
+            <article>
+                <h1>{{posts.title}}</h1>
+                <span>{{posts.created_at}}</span>
+                <p>{{posts.body}}</p>
+            </article>
+        </div>
     </div>
-  </div>
-</div>
 
-</body>
-</html>
+</section>
+
+
 {% endblock content %}

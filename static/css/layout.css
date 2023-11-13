@@ -1,10 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+1+Code:wght@300&display=swap');
+
+@import './nav.css';
+@import './home.css';
+@import './chat.css';
+@import './bulletinboard.css';
+
+
+* {
+    scrollbar-width: auto;
+    scrollbar-color: var(--morado) var(--fondo);
+}
+
+*::-webkit-scrollbar {
+    width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+    background: var(--fondo);
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: var(--morado);
+    border-radius: 10px;
+    border: 5px solid var(--fondo);
+}
+
 :root {
     --morado: #7650e1;
+    --morado-oscuro: #59409d;
     --morado-claro: #d0c4f2;
-    --fondo:#f7f8fc;
-    --blanco:#ffffff;
-    --texto:#494953;
-    --texto-oscuro:#1e1e22;
-  }
+    --fondo: #f3f3f3;
+    --blanco: #ffffff;
+    --texto: #494953;
+    --texto-oscuro: #1e1e22;
+}
 
-  
+* {
+    margin: 0;
+    padding: 0;
+
+}
+
+body {
+    box-sizing: border-box;
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+    width: 100vw;
+}
+
+button {
+    cursor: pointer;
+}
+
+h1, h2, h3, h4, h5, h6, p, span, label, input, a, button, textarea {
+    font-family: 'M PLUS 1 Code', monospace;
+    color: var(--texto)
+}
+
+
+/*Main*/
+main {
+    height: 100vh;
+    width: 100%;
+    background-color: var(--fondo);
+}
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+}
+
+.icon-svg{
+    width: 2rem;
+    stroke: #7650e1;
+}
+

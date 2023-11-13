@@ -1,15 +1,29 @@
-<div class="contenido">
-  <h1>Crea una cuenta</h1>
-  <form class="formularios" method="POST">
-    {% csrf_token %}
-    <label>{{form.username.label}}</label>
-    {{form.username}}
-    <label>{{form.password1.label}}</label>
-    {{form.password1}}
-    <label>{{form.password2.label}}</label>
-    {{form.password2}}
+{% extends 'Layout/layoutLogin.html'%}
 
-    <input class="button" type="submit" value="Crear cuenta" />
-  </form>
-  <p>Ya tienes cuenta? <a href="{% url 'login' %}">Inicia sesion aqui</a></p>
-</div>
+{% block content %}
+<section class="sectionLogin">
+    <h1>REGISTER</h1>
+    <form class="formularios" method="POST">
+        {% csrf_token %}
+        <div class="labelInput">
+            <label>{{form.username.label}}:</label>
+            {{form.username}}
+        </div>
+        <div class="labelInput">
+            <label>{{form.password1.label}}:</label>
+            {{form.password1}}
+        </div>
+        <div class="labelInput">
+            <label>{{form.password2.label}}:</label>
+            {{form.password2}}
+        </div>
+
+        <input class="btn" type="submit" value="Crear"/>
+    </form>
+    <div class="formBack">
+        <p>
+            Ya tienes cuenta? <a href="{% url 'login' %}">Inicia sesion aqui</a>
+        </p>
+    </div>
+</section>
+{% endblock content %}

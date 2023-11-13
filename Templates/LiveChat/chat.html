@@ -1,45 +1,75 @@
 {% extends 'Layout/layout.html'%} {% block content %}
-<!DOCTYPE html>
-<html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-</head>
-<body>
-    <div style="background-color: red;">
-        {% for room in rooms %}
-          <p>{{room.name}}</p>
-          {% if room.is_private and room.owner == request.user %}
-          <p>{{room.name}}</p>
-          {% endif %}
-        {% endfor %}
-    
-      </div>
-  
-      <form id="post-form" method="POST" action="checkview">
-          {% csrf_token %}
-          <label>Room Name</label>
-          <input type="text" name="room_name" id="room_name" width="100px" />
-          <label>Private</label>
-          <input type="checkbox" name="is_private" id="is_private" />
-          <input style="display:none ;"type="text" placeholder="Room code" name="room_code" id="room_code" width="100px" />
-          <input type="submit" value="Enter Room">
-      </form>
-  
-      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-      <script>
-      $(document).ready(function() {
-          $('#is_private').change(function() {
-              if ($(this).is(':checked')) {
-                  $('#room_code').show();
-              } else {
-                  $('#room_code').hide();
-              }
-          });
-      });
-      </script>
-  </body>
+{% load static %}
+<section class="container">
+    <div class="containerPageChat">
+        <div class="containerRooms">
 
 
-</html>
+            <section class="containerFormRooms">
+                <button class="addRoom mas-button">
+                    Add Room
+                </button>
+                <form id="post-form" method="POST" action="checkview" class="inputsRooms" style="display: none;">
+                    <div class="separateForm containerPrivate">
+                        <label>Private</label>
+                        <input type="checkbox" name="is_private" id="is_private"/>
+                    </div>
+                    {% csrf_token %}
+                    <div class="separateForm formBot">
+                        <input type="text" name="room_name" id="room_name" width="100px" placeholder="Name"/>
+
+                        <input style="display:none;" type="text" placeholder="Code" name="room_code" id="room_code"
+                               width="100px"/>
+                        <input type="submit" value="Enter Room">
+                    </div>
+
+                </form>
+            </section>
+
+
+            <section class="listRooms">
+                {% for room in rooms %}
+                <a href="http://127.0.0.1:8000/chat/{{ room.name }}/?username={{ request.user }}"><p>{{room.name}}</p></a>
+                {% if room.is_private and room.owner == request.user %}
+                <a href="http://127.0.0.1:8000/chat/{{ room.name }}/?username={{ request.user }}"><p> <img class="icon-svg" src='{% static "img/lock.svg" %}' alt=""> {{room.name}}</p></a>
+                {% endif %}
+                {% endfor %}
+
+            </section>
+
+
+        </div>
+
+        <div class="chatsPlaceholder">
+            <h2>Enter Room</h2>
+        </div>
+    </div>
+
+</section>
+
+<script>
+
+
+    $(document).ready(function () {
+        $('.mas-button').click(function () {
+            $('#post-form').slideToggle('slow');
+        });
+
+    });
+
+
+    $(document).ready(function () {
+        $('#is_private').change(function () {
+            if ($(this).is(':checked')) {
+                $('#room_code').slideDown('aside');
+            } else {
+                $('#room_code').slideUp('aside');
+            }
+        });
+    });
+
+
+</script>
+
+
 {% endblock content %}

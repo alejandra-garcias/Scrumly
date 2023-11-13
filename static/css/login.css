@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+1+Code:wght@300&display=swap');
+
+@import './layout.css';
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.container {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--fondo);
+
+    & .btn {
+        height: 6vh;
+        background: var(--morado);
+        font-size: 1.1rem;
+        letter-spacing: 1.3px;
+        color: var(--blanco);
+        transition: all 0.3s ease;
+        border-radius: 3px;
+    }
+
+    & .btn:hover {
+        background: var(--morado-oscuro);
+    }
+
+    & .sectionLogin {
+        display: flex;
+        flex-direction: column;
+        background-color: var(--blanco);
+        border-radius: 10px;
+        height: 70vh;
+        width: 30vw;
+        padding: 10px;
+        box-shadow: 0 1px 40px -10px var(--morado-claro);
+
+
+    }
+
+    & .sectionLogin h1 {
+        text-align: center;
+        height: 10vh;
+
+    }
+
+    & .sectionLogin form {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 30vh;
+        height: 40vh;
+    }
+
+    & .sectionLogin input {
+        margin-top: 10px;
+        border: none;
+        border-bottom: 1px solid var(--morado);
+        height: 4.5vh;
+        padding-left: 10px;
+        font-size: 1.2rem;
+        outline: none;
+
+    }
+
+    & .labelInput {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+    }
+}
+
+
+.container .formBack {
+    margin-top: auto;
+}

@@ -1,41 +1,89 @@
 {% load static %}
-<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Layout</title>
-    <!--Link al css-->
-    <link rel="stylesheet" href="{% static 'css/layout.css' %}" />
-  </head>
-  <body>
-    <!----------------------------------------NavBar----------------------------------->
-    <div>
-      <img class="icono" src='{% static "img/logo.svg" %}' />
-      <a href="{% url 'index' %}"> To do list</a>
-      <a href="{% url 'chat' %}"> Chat</a>
-      <a href="{% url 'bulletinboard' %}"> Tablon de anuncios</a>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Scrumly</title>
+    <link rel="stylesheet" href="{% static 'css/layout.css' %}"/>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
 
-      {% if request.user.is_authenticated %}
-      <a href="{% url 'logout' %}"><img class="icono" src='{% static "img/logout.svg" %}' /> Logout</a>
+</head>
+<body>
 
-      {% else %}
-      <a href="{% url 'login' %}"><img class="icono" src='{% static "img/login.svg" %}' />Login</a>
+<nav>
 
-      {% endif %}
+    <div class="containerbtns">
+
+        <div class="containerLogo">
+            <img class="icono" src='{% static "img/logo.svg" %}'/>
+
+            <span>SCRUMLY</span>
+
+        </div>
+
+
+        <section>
+            <a href="{% url 'index' %}" class="btnNav">
+                <div class="containerNavIcon">
+                    <img class="icon-svg" src='{% static "img/todolist.svg" %}'/>
+                </div>
+                
+                <span>Task</span>
+            </a>
+            <a href="{% url 'chat' %}" class="btnNav">
+                <div class="containerNavIcon">
+                  <img class="icon-svg" src='{% static "img/chat.svg" %}'/>  
+                </div>
+                
+
+                <span>Chat</span>
+            </a>
+            <a href="{% url 'bulletinboard' %}" class="btnNav">
+                <div class="containerNavIcon">
+                    <img class="icon-svg" src='{% static "img/news.svg" %}'/>
+                </div>
+                <span>News</span>
+            </a>
+            <a href="{% url 'logout' %}" class="btnNav btnLogout">
+                <div class="containerNavIcon">
+                     <img class="icon-svg" src='{% static "img/logout.svg" %}'/>
+                </div>
+               
+
+                <span>Logout</span>
+            </a>
+
+        </section>
 
     </div>
 
-    <div>
-        {% if request.user.is_authenticated %}
-        <h1>Hola {{ request.user|title }}</h1>
-        <p>Tienes {{ count }} tarea{{ count|pluralize }} sin completar</p>
-        {% endif %}
-    </div>
-    {% block content %} 
+</nav>
+
+<main>
+
+
+    {% block content %}
     {% endblock content %}
 
-    <!-------------------------------------Espacio para footer--------------------------------->
+</main>
+<script>
+    $(document).ready(function () {
+        var menuExpandido = false;
 
-  </body>
+        $('.icono').click(function () {
+            menuExpandido = !menuExpandido;
+
+            $('nav').toggleClass('expandido', menuExpandido);
+
+            if (menuExpandido) {
+                $('nav').animate({width: '15vw'}, 'slow');
+            } else {
+                $('nav').animate({width: '5vw'}, 'slow');
+            }
+        });
+    });
+</script>
+</body>
 </html>

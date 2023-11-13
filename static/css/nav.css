@@ -1,0 +1,147 @@
+nav {
+    display: flex;
+    flex-direction: column;
+    width: 5vw;
+    border-right: 1px solid var(--morado);
+
+
+    & a {
+        width: 50%;
+        text-decoration: none;
+        color: var(--texto);
+        letter-spacing: 1.5px;
+        font-weight: bold;
+
+    }
+
+    & span {
+        display: none;
+    }
+
+    & p {
+        padding: 5px;
+
+        color: var(--morado-oscuro);
+    }
+
+    & .containerLogo {
+        display: flex;
+        border-radius: 10px;
+        width: 100%;
+        height: 8vh;
+        align-items: center;
+        justify-content: space-between;
+
+        & img {
+            width: 3vw;
+            height: 3vw;
+            cursor: pointer;
+            animation: rotate 5s linear infinite;
+        }
+
+        & span {
+            color: var(--morado-oscuro);
+            font-size: 2rem;
+        }
+
+    }
+}
+
+nav.expandido .btnNav span {
+    display: inline-block;
+}
+
+nav.expandido .containerLogo span {
+    display: inline-block;
+}
+
+nav .containerbtns {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    padding: 10px;
+    background: var(--blanco);
+    box-shadow: 0 10px 35px -10px var(--morado-claro);
+
+
+    & section {
+        height: 80vh;
+    }
+
+    & .btnNav {
+        display: flex;
+        border-radius: 10px;
+        width: 100%;
+        height: 8vh;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: 1px solid var(--morado-claro);
+        box-shadow: 0 10px 35px -10px rgba(0, 0, 0, 0.1);
+        position: relative;
+        overflow: hidden;
+        outline: none;
+
+        & .containerNavIcon{
+            width: 8vh;
+            height: 8vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        & span {
+            text-align: center;
+            color: var(--texto);
+            padding: 10px;
+        }
+
+
+    }
+
+
+    & .btnNav:hover {
+        color: var(--blanco);
+        z-index: 2;
+
+        & span {
+            color: var(--blanco);
+        }
+
+        & p {
+            color: var(--blanco);
+
+        }
+    }
+
+
+    & .btnNav:after {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        transition: all 0.3s ease;
+        left: 0;
+        bottom: 0;
+        height: 0;
+        width: 100%;
+        background: var(--morado);
+    }
+
+
+    & .btnNav:hover:after {
+        height: 100%;
+    }
+}
+
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
