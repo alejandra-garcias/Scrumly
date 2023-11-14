@@ -79,8 +79,8 @@ def update(request):
     task_id = request.POST["id"]
     task_subject = request.POST["subject"]
     task_description = request.POST["description"]
-    task_priority = request.POST.get("priority") == "true"  # Convierte la cadena "true" en True, de lo contrario, False
-    task_completed = request.POST.get("completed") == "true"  # Convierte la cadena "true" en True, de lo contrario, False
+    task_priority = "priority" in request.POST  # True si está presente, False si no lo está
+    task_completed = "completed" in request.POST  # True si está presente, False si no lo está
 
     print(task_completed)
     print(task_priority)

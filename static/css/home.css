@@ -44,19 +44,18 @@
                 justify-content: center;
                 font-size: 1rem;
                 font-weight: bold;
-                border: 1px solid var(--morado-claro);
+                border: 1px solid transparent;
                 border-radius: 5px;
-                background: var(--blanco);
+                background: transparent;
                 color: var(--texto);
                 cursor: pointer;
                 transition: all 0.1s linear;
                 backface-visibility: hidden;
+                border-radius: 50%;
             }
 
             & .addTask:hover {
-                background-color: var(--morado);
                 transform: scale(1.05);
-                color: var(--blanco);
             }
         }
 
@@ -235,6 +234,7 @@
                 align-items: center;
                 justify-content: center;
                 width: 10%;
+
             }
 
             & .titleDescriptionArticle {

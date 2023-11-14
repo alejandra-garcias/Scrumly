@@ -55,18 +55,18 @@
                 <div class="modalChecks">
                     <div>
                         <label for="priority">priority</label>
-                        <input type="checkbox" name="priority" id="priority"/>
+                        <input type="checkbox" {% if update.priority %}checked{% endif %} name="priority" id="priority"/>
 
                     </div>
                     <div>
                         <label for="completed">completed</label>
-                        <input type="checkbox" name="completed" id="completed"/>
+                        <input type="checkbox" {% if update.completed %}checked{% endif %}  name="completed" id="completed"/>
 
                     </div>
                 </div>
 
                 <input type="hidden" name="id" value="{{ update.id }}"/>
-                <button class="close mas-button" type="button">
+                <button class="close mas-button" type="submit">
                     x
                 </button>
                 <button class="add" type="submit">Update</button>
@@ -116,7 +116,11 @@
             <article>
                 <a href="{% url 'update_form' data.id %}" class="containerArticle">
                     <div class="iconArticle">
-                        <span>Icon</span>
+                        {% if data.priority %}
+                        <img width="50px" height="50px" src='{% static "img/priority.svg" %}' alt="">
+                        {% else %}
+                        <img width="50px" height="50px" src='{% static "img/notpriority.svg" %}' alt="">
+                        {% endif %}
                     </div>
 
                     <div class="titleDescriptionArticle">
@@ -135,9 +139,7 @@
                                 <p class="incomplete">incomplete</p>
                                 {% endif %}
 
-                                {% if data.priority %}
-                                <p class="priority">priority</p>
-                                {% endif %}
+                                
 
                             </div>
 
@@ -236,10 +238,7 @@
             }
         });
 
-        $('form').submit(function () {
-            $('#priorityCheckbox').val($('#priorityCheckbox').is(':checked'));
-            $('#completedCheckbox').val($('#completedCheckbox').is(':checked'));
-        });
+        
     });
 
     $(document).ready(function () {
@@ -252,10 +251,7 @@
             }
         });
 
-        $('form').submit(function () {
-            $('#priorityCheckbox').val($('#priorityCheckbox').is(':checked'));
-            $('#completedCheckbox').val($('#completedCheckbox').is(':checked'));
-        });
+        
     });
 
     const messagesList = document.querySelector('.messages-list');
