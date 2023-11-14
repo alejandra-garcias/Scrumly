@@ -32,8 +32,8 @@
         </div>
 
         <!------------------------UPDATE----------------------------------->
-
-        {% if update %}
+       
+    {% if update %}
 
         <form class="homeModal" method="post" action="{% url 'update' %}">
             {% csrf_token %}
@@ -48,9 +48,6 @@
                 <div>
                     <label for="description">Description</label>
                     <textarea type="text" name="description" id="description">{{ update.description }}</textarea>
-                </div>
-                <div>
-
                 </div>
                 <div class="modalChecks">
                     <div>
@@ -72,7 +69,8 @@
                 <button class="add" type="submit">Update</button>
             </div>
         </form>
-        {% else %}
+        
+    {% else %}
 
         <!------------------------CREATE----------------------------------->
 
@@ -108,7 +106,8 @@
                 <button class="add" type="submit">Add</button>
             </div>
         </form>
-
+        {% endif %}
+   
 
         <section class="taskContainer">
             {% for data in db_data %}
@@ -200,8 +199,6 @@
 
                     {% for chat in chats %}
                     {% if chat.user == request.user %}
-
-
                     {% endif %}
                     {% endfor %}
 
@@ -220,7 +217,7 @@
     </div>
     </div>
 
-    {% endif %}
+    
 
 
 </section>
