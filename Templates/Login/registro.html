@@ -17,12 +17,15 @@
             <label>{{form.password2.label}}:</label>
             {{form.password2}}
         </div>
-
         <input class="btn" type="submit" value="Crear"/>
     </form>
     <div class="formBack">
-        <p>
-            Ya tienes cuenta? <a href="{% url 'login' %}">Inicia sesion aqui</a>
+        {% if form.errors %}
+        <p>La contraseña debe tener al menos 8 caracteres y uno de ellos debe ser numerico.
+        </p>
+        <br>
+        {% endif %}
+    <p>Ya tienes cuenta? <a href="{% url 'login' %}">Inicia sesion aqui</a>
         </p>
     </div>
 </section>
