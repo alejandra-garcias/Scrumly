@@ -74,8 +74,9 @@ main {
     height: 100vh;
 }
 
-.icon-svg{
+.icon-svg {
     width: 2rem;
+    height: 2rem;
     stroke: #7650e1;
 }
 
